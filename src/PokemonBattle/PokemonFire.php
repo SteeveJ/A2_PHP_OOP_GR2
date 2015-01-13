@@ -4,7 +4,8 @@ namespace SteeveJ\PokemonBattle;
 
 
 
-use BenjaminGuillemant\PokemonBattle\Model\PokemonModel;
+use SteeveJ\PokemonBattle\Model\PokemonModel;
+
 
 class PokemonFire extends PokemonModel
 {

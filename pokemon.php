@@ -2,10 +2,10 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use BenjaminGuillemant\PokemonBattle\Model\PokemonModel;
-use BenjaminGuillemant\PokemonBattle\PokemonFire;
-use BenjaminGuillemant\PokemonBattle\PokemonWater;
-use BenjaminGuillemant\PokemonBattle\PokemonPlant;
+use SteeveJ\PokemonBattle\Model\PokemonModel;
+use SteeveJ\PokemonBattle\PokemonFire;
+use SteeveJ\PokemonBattle\PokemonWater;
+use SteeveJ\PokemonBattle\PokemonPlant;
 
 $pokemonFire = new PokemonFire();
 $pokemonFire

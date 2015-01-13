@@ -2,7 +2,7 @@
 
 namespace SteeveJ\PokemonBattle;
 
-use BenjaminGuillemant\PokemonBattle\Model\PokemonModel;
+use SteeveJ\PokemonBattle\Model\PokemonModel;
 
 class PokemonPlant extends PokemonModel
 {
