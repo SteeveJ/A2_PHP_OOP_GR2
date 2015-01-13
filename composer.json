@@ -1,0 +1,25 @@
+{
+    "name": "steevej/a2_php_oop_gr2",
+    "require": {
+        "cocur/slugify":   "~1.0",
+        "doctrine/dbal":   "~2.5",
+        "doctrine/orm":    "~2.4",
+        "symfony/console": "~2.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steeve JERENT",
+            "email": "jerent.steeve@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "SteeveJ\\": "src"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
