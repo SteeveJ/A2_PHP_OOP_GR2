@@ -1,37 +1,75 @@
 <?php
 
 namespace SteeveJ\PokemonBattle\Model;
-
-
-abstract class PokemonModel implements PokemonInterface
+use DateTime;
+/**
+ * Class PokemonModel
+ * @package SteeveJ\PokemonBattle\Model
+ *
+ * @Entity
+ * @Table(name="pokemon")
+ */
+class PokemonModel implements PokemonInterface
 {
     /**
      * @var int
+     * @Id
+     * @GeneratedValue(strategy="AUTO")
+     * @Column(name="id", type="integer")
      */
     private $Id;
 
     /**
+     * @var TrainerModel
+     * @ManyToOne(targetEntity="TrainerModel")
+     * @JoinColumn(name="trainer_id", referencedColumnName="id")
+     */
+    private $trainer_id;
+
+
+    /**
      * @var string
+     * @Column(name="name", type="string", length=40)
      */
     private $name;
 
     /**
      * @var int
+     * @Column(name="hp", type="integer")
      */
     private $hp;
 
     /**
      * @var int
+     * @Column(name="type", type="smallint", length=1)
      */
     private $type;
+
 
     const TYPE_FIRE     = 0;
     const TYPE_WATER    = 1;
     const TYPE_PLANT    = 2;
-    /*const TYPE_ELECTRIC = 3;
-    const TYPE_PSY      = 4;
-    const TYPE_NORMAL   = 5;*/
 
+
+
+
+
+
+    /**
+     * @return TrainerModel
+     */
+    public function getTrainerId()
+    {
+        return $this->trainer_id;
+    }
+
+    /**
+     * @param TrainerModel $trainer_id
+     */
+    public function setTrainerId($trainer_id)
+    {
+        $this->trainer_id = $trainer_id;
+    }
 
     /**
      * @return int
@@ -142,9 +180,6 @@ abstract class PokemonModel implements PokemonInterface
             self::TYPE_FIRE,
             self::TYPE_WATER,
             self::TYPE_PLANT,
-            self::TYPE_ELECTRIC,
-            self::TYPE_PSY,
-            self::TYPE_NORMAL,
         ]))
             $this->type = $type;
         else
@@ -154,15 +189,52 @@ abstract class PokemonModel implements PokemonInterface
     }
 
     /**
-     * @param int $type
-     *
+     * @param $type
+     * @param $myType
      * @return bool
      */
-    abstract public function isTypeWeak($type);
+    public function isTypeWeak($type, $myType){
+        $request = false;
+        if(self::TYPE_FIRE === $myType){
+            if(self::TYPE_WATER === $type){
+                $request = true;
+            }
+        }
+        if(self::TYPE_WATER === $myType){
+            if(self::TYPE_PLANT === $type){
+                $request = true;
+            }
+        }
+        if(self::TYPE_PLANT === $myType){
+            if(self::TYPE_FIRE === $type){
+                $request = true;
+            }
+        }
+        return $request;
+    }
 
     /**
-     * @param int $type
+     * @param $type
+     * @param $myType
      * @return bool
      */
-    abstract public function isTypeStrong($type);
+    public function isTypeStrong($type, $myType){
+        $request = false;
+        if(self::TYPE_FIRE === $myType){
+            if(self::TYPE_PLANT === $type){
+                $request = true;
+            }
+        }
+        if(self::TYPE_WATER === $myType){
+            if(self::TYPE_FIRE === $type){
+                $request = true;
+            }
+        }
+        if(self::TYPE_PLANT === $myType){
+            if(self::TYPE_WATER === $type){
+                $request = true;
+            }
+        }
+        return $request;
+    }
 }

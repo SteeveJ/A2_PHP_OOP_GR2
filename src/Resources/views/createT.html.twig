@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-toggle"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">Pokemon Battle</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="login.php">login</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /container -->
+    </div>
+    <div class="col-md-6">
+        {% if usernameError %}
+            <div class="alert alert-warning" role="alert">Username not available</div>
+        {% endif %}
+        {% if passwordError %}
+            <div class="alert alert-warning" role="alert">password are not same.</div>
+        {% endif %}
+        <form action="createTrainer.php" method="post">
+            <div class="form-group">
+                <label for="username">Email address</label>
+                <input type="text" class="form-control" id="username" placeholder="Your Username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="passwordVerification" class="sr-only">Password</label>
+                <input type="password" id="passwordVerification" class="form-control" placeholder="PasswordVerification" name="passwordVerification" required>
+            </div>
+            <div class="form-group">
+                <label for="choice" class="sr-only">Pokemon</label>
+                <select class="form-control" id="choice" name="pokemon">
+                    <option>Salamèche</option>
+                    <option>Carapuce</option>
+                    <option>Bulbizarre</option>
+                </select>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">register</button>
+        </form>
+    </div>
+{% endblock %}
